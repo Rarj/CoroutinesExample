@@ -3,9 +3,7 @@ package rio.arj.coroutinesexample
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
-import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import rio.arj.coroutinesexample.model.PokemonModel
 import rio.arj.coroutinesexample.repository.PokemonRepository
 
