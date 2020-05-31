@@ -19,17 +19,23 @@ class PokemonViewModelTest {
   @Mock
   private lateinit var repo: PokemonRepository
 
+  private lateinit var expected: PokemonModel
+
   @Before
   fun setup() {
     MockitoAnnotations.initMocks(this)
+    expected = PokemonModel(listOf(Card("imageUrl")))
   }
 
   @Test
   fun cardShouldNotReturnEmpty() = runBlocking {
-    val expected = PokemonModel(listOf(Card("imageUrl")))
     `when`(repo.getCards()).thenReturn(expected)
-
     Assert.assertEquals(expected, repo.getCards())
   }
 
+  @Test
+  fun imageUrlShouldNotBlank() = runBlocking {
+    `when`(repo.getCards()).thenReturn(expected)
+    Assert.assertTrue(repo.getCards().cards?.get(0)?.imageUrl.toString().isNotEmpty())
+  }
 }
